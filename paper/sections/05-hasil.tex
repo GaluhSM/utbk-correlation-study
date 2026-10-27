@@ -1,0 +1,123 @@
+% Hasil
+\section{Hasil}
+
+\subsection{Perbandingan Statistik Deskriptif Sampel dan Parameter Nasional Tidak Resmi}
+
+\input{../output/tables/tab_deskriptif}
+
+Rerata sampel melampaui rerata nasional sebesar 131,63--180,95 poin pada seluruh subtes (Tabel~\ref{tab:deskriptif}), sehingga sampel ($N=1.886$) condong ke skor tinggi. $SD$ sampel menyusut pada enam dari delapan subtes dibandingkan parameter nasional tidak resmi, dan penyusutan itu mengindikasikan \textit{restriction of range}. Penurunan terbesar teramati pada PPU ($-38,50$ poin) dan LBI Soshum ($-29,89$ poin). Sebaliknya, $SD$ PK membesar 31,90 poin akibat nilai ekstrem sebesar 1.173,55 (dievaluasi pada Subbagian Evaluasi Asumsi Distribusi). Selain itu, hanya 0,42\% sampel yang berada di bawah rerata nasional ($M=500$), jauh dari proporsi 50\% yang diharapkan pada sampel representatif.
+
+\subsection{Evaluasi Asumsi Distribusi}
+Tujuh statistik nasional tidak resmi per subtes menunjukkan bahwa distribusi skor menyimpang dari normal (Tabel~\ref{tab:nonnormal_diag}). Skor minimum nasional jauh lebih dekat ke rerata daripada yang diharapkan. Nilai $z$ minimum berkisar dari $-1,43$ (PK) hingga $-2,89$ (LBI Soshum), padahal pada populasi normal berukuran 846.518 peserta hadir minimum diharapkan sekitar $-4,72$ $SD$. Bila distribusi normal, jumlah peserta yang seharusnya berada di bawah minimum nasional berkisar dari sekitar 1.654 (LBI Soshum) hingga 64.760 (PK), sedangkan jumlah teramati sekitar satu. Skor $M - 3\,SD$ berada di bawah minimum nasional pada seluruh subtes. Di sisi atas, $z$ maksimum melampaui batas normal ($4,72$) pada PU ($5,51$), PM ($4,98$), dan PK ($6,74$, skor $1.173,55$), tetapi tidak pada subtes lain ($3,91$ pada LBE hingga $4,54$ pada LBI Saintek). Selisih rerata dan median bernilai positif pada enam subtes (PK $25,1$; LBE $16,3$; PM $10,9$) dan sedikit negatif pada kedua skor LBI ($-3,76$ dan $-3,65$). Kemiringan Bowley terbesar teramati pada PK ($0,26$), sedangkan rasio $\frac{IQR}{SD}$ ($1,33$--$1,54$) berada di sekitar nilai normal ($1,349$). Pola ini berupa distribusi miring ke kanan dengan ekor kiri terpotong dan paling menonjol pada PK, LBE, dan PM.
+
+\input{../output/tables/tab_nonnormal_diag}
+
+Dampak ketidaknormalan diperiksa melalui simulasi (Tabel~\ref{tab:nonnormal_sim}). Distribusi Johnson SB \autocite{johnson1949} untuk tiap subtes cocok dengan kuantil, rerata, dan $SD$ nasional (nilai fungsi tujuan $\leq 0,009$ pada semua subtes; galat kuantil umumnya di bawah tiga poin, terbesar $7,5$ poin pada median LBI Saintek, sedangkan galat rerata hingga $5,2$ poin dan galat $SD$ hingga $5,5$ poin). Skor komposit simulasi miring ke kanan (\textit{skewness} $0,41$--$0,42$; ekskurtosis berlebih $0,06$). Simulasi A (korelasi laten $0,425$) menghasilkan $SD$ skor komposit $68,3$, sedangkan simulasi B (korelasi laten $0,415$) menghasilkan $S_Z = 67,72$. Kedua simulasi menghasilkan pola yang sama. Di sekitar $\pm 1\,SD$, hasil simulasi dekat dengan normal (selisih skor kurang dari $1,5$ poin). Di ekor atas, peluang melampaui $M + 2\,S_Z$ adalah $3,44\%$ (A) dan $3,32\%$ (B) dibandingkan $2,28\%$ pada normal, dan peluang melampaui $M + 3\,S_Z$ adalah $0,407\%$ dan $0,380\%$ dibandingkan $0,135\%$. Peringkat nasional setara $M + 3\,S_Z$ berubah dari sekitar 1.143 menjadi 3.216--3.446. Skor komposit pada persentil normal ke-97,7 dan ke-99,9 pada simulasi B adalah $649$ dan $730$, atau $13,4$ dan $26,9$ poin di atas versi normal ($635$ dan $703$). Di ekor bawah, peluang berada di bawah $M - 2\,S_Z$ hanya $0,89\%$ (A) dan $0,83\%$ (B) dibandingkan $2,28\%$, dan peluang di bawah $M - 3\,S_Z$ praktis nol. Skor pada persentil normal ke-2,3 dan ke-0,13 pada simulasi B adalah $381$ dan $343$ dibandingkan $365$ dan $297$.
+
+\input{../output/tables/tab_nonnormal_sim}
+
+Estimasi korelasi dan translasi persentil pada Tabel~\ref{tab:ranking_subtes} dan~\ref{tab:ranking_komposit} tetap menggunakan pendekatan normal sebagai model kerja. Simulasi menunjukkan arah dan kisaran ukuran dampaknya, terutama di ekor distribusi.
+
+\subsection{Estimasi Korelasi Antarsubtes}
+Estimasi korelasi Pearson antardelapan subtes berdasarkan data sampel ($N=1.886$) menghasilkan rerata korelasi \textit{off-diagonal} sebesar 0,300 (Tabel~\ref{tab:korelasi}, Gambar~\ref{fig:heatmap_raw}).
+
+\input{../output/tables/tab_korelasi}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.65\textwidth]{../output/figures/heatmap_raw.png}
+    \caption{\textit{Heatmap} Matriks Korelasi Pearson Antarsubtes (Data Sampel, $N=1.886$)}
+    \label{fig:heatmap_raw}
+\end{figure}
+
+\subsection{Koreksi Kuantitatif \textit{Restriction of Range} (Thorndike Case III)}
+Koreksi Thorndike Case III dengan $S_Z \approx 67,72$, hasil iterasi titik tetap, menghasilkan matriks korelasi terkoreksi dengan rerata \textit{off-diagonal} sebesar 0,425 (Tabel~\ref{tab:korelasi_terkoreksi}, Gambar~\ref{fig:heatmap_thorndike}).
+
+\input{../output/tables/tab_korelasi_terkoreksi}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.65\textwidth]{../output/figures/heatmap_thorndike.png}
+    \caption{\textit{Heatmap} Matriks Korelasi Antarsubtes Terkoreksi \textit{Restriction of Range} (Thorndike Case III)}
+    \label{fig:heatmap_thorndike}
+\end{figure}
+
+\subsection{Analisis Faktor Eksploratori dan Konfirmatori}
+Model 2 (dua faktor berkorelasi, Literasi dan Numerasi) memiliki kecocokan yang lebih baik secara signifikan dibandingkan Model 1 (\textit{g-factor} tunggal) (Tabel~\ref{tab:cfa_fit}, Gambar~\ref{fig:scree_parallel}). CFI meningkat dari $0,932$ menjadi $0,967$, RMSEA menurun dari $0,073$ menjadi $0,052$, dan uji selisih $\chi^2$ berskala Satorra--Bentler signifikan ($\Delta\chi^2(1) = 91,55$, $p < 0,001$). AIC Model 2 juga lebih rendah ($173.536,4$ berbanding $173.638,9$), sehingga Model 2 unggul pada seluruh kriteria kecocokan yang diuji.
+
+\input{../output/tables/tab_cfa_fit}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.65\textwidth]{../output/figures/scree_parallel_plot.png}
+    \caption{\textit{Scree Plot} dan \textit{Horn's Parallel Analysis} untuk Diagnostik Retensi Faktor}
+    \label{fig:scree_parallel}
+\end{figure}
+
+\textit{Parallel Analysis} berbasis faktor (Gambar~\ref{fig:scree_parallel}) menyarankan tiga faktor. Nilai eigen faktor-analitik teramati ke-1, ke-2, dan ke-3 ($2,473$; $0,261$; $0,122$) melampaui nilai eigen hasil simulasi data acak ($0,392$; $0,070$; $0,044$), sedangkan faktor ke-4 tidak ($0,006$ berbanding $0,023$). Jumlah ini berbeda dari struktur dua faktor yang ditetapkan apriori. Struktur dua faktor tetap dipertahankan karena tiga alasan: (1) pembedaan Literasi dan Numerasi bersandar pada kerangka teori yang dirumuskan sebelum analisis (lihat Tinjauan Pustaka); (2) nilai eigen faktor ketiga ($0,122$) jauh lebih kecil daripada faktor pertama ($2,473$) dan kedua ($0,261$), sehingga sumbangannya terhadap varians bersama relatif kecil; dan (3) pada sampel yang besar ($N = 1.886$), \textit{Parallel Analysis} dapat mengenali faktor kecil yang kurang bermakna secara substantif.
+
+EFA tiga-faktor (rotasi \textit{oblimin}) menunjukkan bahwa faktor ketiga dibebani terutama oleh kedua skor LBI (LBI Soshum $0,523$; LBI Saintek $0,440$) dan sebagian oleh LBE ($0,322$). Dua faktor lainnya berisi subtes kuantitatif (PK $0,747$; PM $0,516$; PU $0,433$) dan subtes literasi umum (PPU $0,675$; PBM $0,595$; LBE $0,384$). Pola ini konsisten dengan tafsiran bahwa faktor ketiga mencerminkan varians bersama dua skor yang berasal dari satu tes LBI. Faktor itu hanya dibebani dua indikator utama, dan tafsiran ini belum diuji pada data independen. Pengaruh dependensi LBI terhadap hasil utama diperiksa pada Subbagian Sensitivitas terhadap Perlakuan Dua Skor LBI.
+
+Sebagai pembanding, EFA dua-faktor dengan rotasi \textit{oblimin} menghasilkan kecocokan yang baik (CFI $= 0,982$; RMSEA $= 0,046$) dengan korelasi antarfaktor sebesar $0,635$, lebih rendah daripada $\phi = 0,813$ pada CFA. Selisih ini kemungkinan terkait dengan batasan nol pada \textit{cross-loading} (muatan subtes pada faktor di luar faktor utamanya) dalam model CFA. Batasan itu berpengaruh terutama pada PU, yang pada EFA membebani kedua faktor (indeks kompleksitas $1,95$, ukuran banyaknya faktor yang dimuati satu subtes). Dengan demikian, nilai $\phi$ pada CFA bergantung pada spesifikasi struktur sederhana (setiap subtes hanya memuat satu faktor).
+
+Muatan faktor terstandarisasi pada Model 2 (Tabel~\ref{tab:factor_loadings}) menunjukkan bahwa lima subtes literasi (PPU, PBM, LBI Saintek, LBI Soshum, LBE) membebani faktor Literasi dengan muatan berkisar $0,384$--$0,629$. Tiga subtes kuantitatif (PU, PK, PM) membebani faktor Numerasi dengan muatan $0,554$--$0,736$. Seluruh muatan signifikan secara statistik ($p < 0,001$). LBI Saintek dan LBI Soshum sama-sama membebani faktor Literasi, dengan muatan LBI Soshum ($0,384$) lebih rendah daripada LBI Saintek ($0,498$). Korelasi antarfaktor laten tergolong tinggi ($\phi = 0,813$; $p < 0,001$). Meskipun Model 2 lebih unggul secara statistik, kedua faktor berbagi varians bersama yang substansial, sejalan dengan keberadaan \textit{g-factor} yang mendasari keduanya.
+
+\input{../output/tables/tab_factor_loadings}
+
+\subsection{Sensitivitas terhadap Perlakuan Dua Skor LBI}
+Pertama, model CFA dua-faktor diperluas dengan kovarians residual antara kedua skor LBI (Tabel~\ref{tab:sens_cfa}). Perluasan ini memperbaiki kecocokan model secara statistik ($\Delta\chi^2(1) = 17,3$, $p < 0,001$; CFI dari $0,967$ menjadi $0,973$; RMSEA dari $0,052$ menjadi $0,049$; AIC dan \textit{Bayesian Information Criterion} (BIC) menurun). Namun, korelasi residualnya kecil ($0,108$), korelasi antarfaktor hampir tidak berubah ($\phi$ dari $0,813$ menjadi $0,816$), dan muatan kedua LBI hanya bergeser sedikit (LBI Saintek dari $0,498$ menjadi $0,484$; LBI Soshum dari $0,384$ menjadi $0,365$). Dependensi antar-LBI signifikan secara statistik pada sampel sebesar ini, tetapi kecil secara praktis terhadap struktur dua-faktor.
+
+\input{../output/tables/tab_sensitivitas_cfa}
+
+Kedua, koreksi Thorndike Case III diulang dengan salah satu atau kedua skor LBI dikeluarkan dari skor komposit (Tabel~\ref{tab:sens_thorndike}). Skor komposit dihitung ulang sebagai rerata subtes yang tersisa, dan tiap subtes memakai $SD$ nasional tidak resminya sendiri. Rerata korelasi terkoreksi tetap berada pada kisaran sempit, $0,414$--$0,425$, dan $S_Z$ pada $67,43$--$68,31$, dibandingkan $\bar{R} = 0,425$ dan $S_Z = 67,72$ pada spesifikasi utama. Pembobotan ganda LBI pada skor komposit delapan subtes ($\frac{2}{8}$) tidak menggeser estimasi utama secara berarti. Rasio $SD$ tersirat terhadap $SD$ nasional tidak resmi pada keempat skenario berkisar $0,645$--$1,498$, sehingga keterbatasan homogenitas pada subbagian berikut tidak bergantung pada perlakuan LBI.
+
+\input{../output/tables/tab_sensitivitas_thorndike}
+
+\subsection{Evaluasi Homogenitas Struktur Korelasi Antarsubtes}
+Koreksi Thorndike Case III mengasumsikan struktur korelasi yang relatif seragam antarpasangan subtes untuk menurunkan $SD$ skor komposit populasi tersirat. Kewajaran asumsi itu diuji dengan menghitung $SD$ populasi tersirat tiap subtes menggunakan korelasi tiap subtes terhadap skor komposit ($r_{iZ}$, korelasi item-total; Tabel~\ref{tab:diagnostik}), lalu membandingkannya dengan $SD$ nasional tidak resminya.
+
+\input{../output/tables/tab_diagnostik}
+
+Rasio bervariasi cukup lebar (0,674--1,498), dan variasi ini mengindikasikan bahwa asumsi homogenitas korelasi tidak terpenuhi secara seragam pada seluruh subtes. Deviasi terbesar teramati pada PK (rasio $1,498$), yang konsisten dengan nilai ekstrem pada subtes itu (lihat Subbagian Evaluasi Asumsi Distribusi). Deviasi besar juga teramati pada PPU (rasio $0,674$) dan LBI Soshum (rasio $0,742$), yang keduanya memiliki $SD$ tersirat jauh di bawah $SD$ nasional tidak resmi. Sebaliknya, PU, PBM, LBI Saintek, LBE, dan PM memiliki rasio yang relatif mendekati satu ($0,850$--$1,220$), sehingga asumsi Case III lebih sesuai untuk subtes-subtes itu. Pola ini mengindikasikan bahwa $\bar{R} \approx 0,425$ paling tepat ditafsirkan sebagai rerata populasi yang menyamaratakan heterogenitas riil antarsubtes. Keterbatasan ini dicatat lebih lanjut pada Bagian Keterbatasan Penelitian.
+
+\subsection{Ketidakpastian Estimasi dari \textit{Bootstrap} dan Sensitivitas terhadap $SD$ Nasional}
+Dari 2.000 replikasi \textit{bootstrap}, seluruhnya konvergen (Tabel~\ref{tab:bootstrap}). Interval persentil 95\% untuk $S_Z$ adalah $[66,6; 68,8]$ di sekitar estimasi $67,7$ ($SE = 0,55$), untuk $\lambda^2$ adalah $[0,479; 0,700]$, dan untuk $\bar{R}$ adalah $[0,407; 0,442]$ ($SE = 0,009$). Pada skala skor komposit, interval $S_Z$ itu hanya menggeser skor sekitar tiga poin atau kurang pada $M \pm 3\,SD$. Skor komposit pada $M + 2\,SD$ sekitar $635$ (interval $633$--$638$), pada $M + 3\,SD$ sekitar $703$ ($700$--$706$), dan pada $M - 3\,SD$ sekitar $297$ ($294$--$300$).
+
+\input{../output/tables/tab_bootstrap}
+
+Estimasi jauh lebih peka terhadap perubahan $SD$ nasional daripada terhadap pengambilan sampel (Tabel~\ref{tab:sens_sd}). Perubahan seluruh $SD$ sebesar $\pm 5\%$ menggeser $\bar{R}$ menjadi $0,367$ dan $0,475$ ($S_Z$ $60,9$ dan $74,2$), dan perubahan $\pm 10\%$ menggesernya menjadi $0,300$ dan $0,519$ ($S_Z$ $53,8$ dan $80,5$). Pada pengali $0,90$, $\lambda^2$ mendekati nol ($-0,002$) dan $S_Z$ ($53,79$) hampir sama dengan $s_Z$ ($53,84$), sehingga koreksi Case III praktis tidak mengubah korelasi sampel ($\bar{R} = 0,300$). Pada skenario ini, skor komposit sampel tidak menunjukkan \textit{restriction of range} terhadap populasi yang diasumsikan. Mengganti $SD_{\text{PU}}$ dari $71,52$ menjadi $100$ menaikkan $\bar{R}$ menjadi $0,466$ ($S_Z = 73,0$). Rasio $SD$ tersirat terhadap $SD$ nasional tetap bervariasi antarsubtes pada semua skenario (minimum $0,669$--$0,699$; maksimum $1,46$--$1,57$), sehingga temuan heterogenitas pada Subbagian Evaluasi Homogenitas Struktur Korelasi Antarsubtes tidak bergantung pada skala $SD$ yang diasumsikan.
+
+Hasil ini menunjukkan bahwa $\bar{R} \approx 0,425$ dan $S_Z \approx 67,72$ bersifat kondisional terhadap parameter nasional yang belum terverifikasi, dan bahwa interval \textit{bootstrap} hanya mencerminkan sebagian ketidakpastian (lihat Keterbatasan Penelitian).
+
+\input{../output/tables/tab_sensitivitas_sd}
+
+\subsection{Sensitivitas terhadap Korelasi yang Bergantung pada Tingkat Skor}
+Data ini tidak dapat memisahkan \textit{restriction of range} dari diferensiasi kemampuan (lihat Pembahasan), sehingga dampak SLODR hanya dapat diperiksa melalui skenario simulasi. Skenario $b = 0,02$ menghasilkan korelasi bersyarat $0,446$ pada $g = -1$ dan $0,395$ pada $g = +1$, sedangkan skenario $b = 0,04$ menghasilkan $0,479$ dan $0,375$.
+
+Pada bagian pertama simulasi (Tabel~\ref{tab:slodr_ekor}), $SD$ skor komposit tetap $67,72$ pada tiap $b$. Penurunan korelasi pada skor tinggi menipiskan ekor atas dan menebalkan ekor bawah, sehingga kemiringan ke kanan yang berasal dari marginal berkurang. \textit{Skewness} skor komposit turun dari $0,418$ ($b = 0$) menjadi $0,304$ ($b = 0,02$) dan $0,195$ ($b = 0,04$). Peluang melampaui $M + 2\,S_Z$ turun dari $3,33\%$ menjadi $3,02\%$ dan $2,72\%$ (normal $2,28\%$), dan peluang melampaui $M + 3\,S_Z$ turun dari $0,379\%$ menjadi $0,257\%$ dan $0,161\%$ (normal $0,135\%$). Skor komposit pada persentil normal ke-99,9 turun dari $730$ menjadi $718$ dan $707$ (normal $703$), sedangkan pada persentil normal ke-97,7 turun dari $649$ menjadi $645$ dan $641$ (normal $635$). Di ekor bawah, peluang berada di bawah $M - 2\,S_Z$ naik dari $0,81\%$ menjadi $1,11\%$ dan $1,43\%$, masih di bawah $2,28\%$ pada normal. Perubahan di sekitar $\pm 1\,SD$ kecil (selisih skor kurang dari $1,6$ poin pada semua skenario).
+
+\input{../output/tables/tab_slodr_ekor}
+
+Pada bagian kedua simulasi (Tabel~\ref{tab:slodr_case3}), sampel simulasi disamakan dengan sampel teramati (rerata skor komposit $657,8$; $SD$ $53,8$; rerata korelasi \textit{raw sample} $0,300$), lalu koreksi dijalankan dan dibandingkan dengan nilai sebenarnya pada populasi simulasi. Karena sampel yang disimulasikan sama pada semua $b$, taksiran Case III identik ($\bar{R} = 0,437$; $S_Z = 68,7$), sedangkan nilai sebenarnya berubah. Pada $b = 0$ koreksi memulihkan nilai sebenarnya dengan baik (bias $\bar{R}$ $-0,002$; bias $S_Z$ $-0,2$), sehingga prosedur dapat dipercaya bila asumsinya terpenuhi. Pada $b = 0,02$, $\bar{R}$ sebenarnya $0,499$ (bias $-0,061$) dan $S_Z$ sebenarnya $72,3$ (bias $-3,6$). Pada $b = 0,04$, nilai itu masing-masing $0,561$ (bias $-0,123$) dan $75,7$ (bias $-7,0$). Dalam model ini, koreksi Case III menaksir rendah korelasi dan $SD$ populasi bila SLODR berlaku, dan taksiran makin rendah pada $b$ yang makin besar. Taksiran simulasi pada $b = 0$ ($0,437$) sedikit berbeda dari estimasi utama ($0,425$) karena populasi simulasi bersifat Gaussian, dan perbedaan ini kecil dibandingkan dengan bias pada $b > 0$.
+
+\input{../output/tables/tab_slodr_case3}
+
+Model satu faktor dengan muatan linear terhadap $g$ hanyalah satu bentuk SLODR di antara banyak kemungkinan, dan data ini tidak dapat menunjukkan apakah $b$ sebesar itu, lebih kecil, atau nol.
+
+\subsection{Tren Estimasi Korelasi Sepanjang Proses Pengumpulan Data}
+Rerata korelasi \textit{off-diagonal} tidak konstan selama pengumpulan data. Estimasi berfluktuasi, lalu melandai (\textit{plateau}) seiring penambahan sampel (Tabel~\ref{tab:saturasi_tahap}).
+
+\input{../output/tables/tab_saturasi_tahap}
+
+Pada 17 tahap awal, yaitu utas khusus per-PTN (Tahap 1 hingga 17, $N = 216$ hingga $N = 1.459$), estimasi korelasi kumulatif berfluktuasi antara $0,267$ pada Tahap 12 (Universitas Pendidikan Indonesia, UPI) dan $0,345$ pada Tahap 7 (Institut Teknologi Sepuluh Nopember, ITS). Fluktuasi ini mencerminkan perbedaan varians skor pada tiap klaster PTN yang masuk secara berurutan. Korelasi melonjak tajam setelah data ITS, yang memiliki sebaran skor kuantitatif tinggi, ditambahkan (Tahap 7). Korelasi kemudian menurun bertahap seiring masuknya klaster PTN dengan sebaran skor lokal yang relatif lebih homogen, yaitu UB, UPI, UGM, Universitas Airlangga (Unair), dan Politeknik Negeri Jakarta (PNJ) pada Tahap 11--15. Setelah itu, korelasi meningkat kembali menjelang penambahan data Universitas Indonesia (Tahap 16, $r = 0,286$) dan Institut Teknologi Bandung (Tahap 17, $r = 0,305$).
+
+Sebaliknya, Tahap 18 (utas terbuka inklusif @sbmptnfess, $N = 1.709$) dan Tahap 19 (akun publik @utbkcak, $N = 1.886$) hanya mengubah estimasi secara marjinal ($0,300$--$0,309$). Kedua tahap itu secara desain ditujukan untuk menjaring variasi skor yang lebih luas tanpa syarat kelulusan. Hasil ini mengindikasikan bahwa sampel telah mencapai batas keterwakilan maksimal (\textit{saturation plateau}) yang dapat diperoleh dari karakteristik audiens platform terkait.
+
+\subsection{Matriks Translasi Persentil Standar}
+Sebagai aplikasi praktis dari parameter nasional tidak resmi dan estimasi korelasi, Tabel~\ref{tab:ranking_subtes} menyajikan translasi tujuh titik \textit{benchmark} persentil standar ($M \pm k\,SD$, $k = 0, 1, 2, 3$) ke skor mentah tiap subtes, dengan $SD$ nasional tidak resmi per subtes ($SD_{\text{PU}} = 71,52$; $SD_{\text{subtes lain}} = 100$). Persentil dihitung langsung dari distribusi normal baku terhadap parameter populasi ($N_{\text{nasional}} = 846.518$ peserta hadir), sehingga nilai persentil pada tiap baris identik lintas subtes secara desain. Hanya skor mentah yang berbeda, mengikuti perbedaan $SD$ nasional antarsubtes.
+
+\input{../output/tables/tab_ranking_subtes}
+
+Tabel~\ref{tab:ranking_komposit} memperluas translasi itu ke skor komposit dengan membandingkan tujuh skenario asumsi korelasi antarsubtes. Skenario itu disusun simetris di sekitar estimasi Thorndike Case III, yakni tiga skenario di bawahnya dan tiga di atasnya. Ketujuh skenario adalah korelasi \textit{raw sample} ($r \approx 0,300$), estimasi terkoreksi Thorndike Case III ($R \approx 0,425$; $S_Z \approx 67,72$), dan lima titik hipotetis pada rentang $r = 0,350$--$0,550$. Kelima titik hipotetis berfungsi sebagai analisis sensitivitas. Perbedaan asumsi korelasi berdampak besar pada skor komposit di persentil ekstrem. Pada titik $M + 2\,SD$, misalnya, skor komposit berkisar dari $620,25$ (korelasi \textit{raw sample}) hingga $650,25$ (skenario $r = 0,550$), dengan estimasi Thorndike Case III pada $635,43$. Selisih hingga 30 poin itu murni berasal dari perbedaan asumsi struktur korelasi. Pola ini menunjukkan bahwa penerjemahan skor komposit ke persentil nasional sensitif terhadap ketepatan estimasi korelasi antarsubtes yang digunakan.
+
+\input{../output/tables/tab_ranking_komposit}

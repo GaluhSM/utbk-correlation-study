@@ -1,0 +1,239 @@
+---
+title: "Laporan Komputasi Presisi Tinggi: Analisis Korelasi & Struktur Faktor UTBK-SNBT 2026"
+author: "Galuh Saputra"
+date: "`r Sys.Date()`"
+output:
+  pdf_document:
+    toc: true
+    toc_depth: 2
+    number_sections: true
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE, message = FALSE, warning = FALSE)
+options(knitr.kable.NA = "-")
+library(dplyr)
+library(readr)
+library(knitr)
+library(kableExtra)
+library(here)
+library(lavaan)
+
+source(here::here("R", "utils_stats.R"))
+source(here::here("R", "constants.R"))
+
+data_clean    <- readr::read_csv(
+  here::here("data", "processed", "utbk_clean.csv"),
+  col_types     = readr::cols(),
+  show_col_types = FALSE
+)
+data_nat      <- readr::read_csv(
+  here::here("data", "raw", "utbk_national_descriptive_statistics.csv"),
+  col_types     = readr::cols(),
+  show_col_types = FALSE
+)
+history_df    <- readr::read_csv(
+  here::here("output", "tables", "iteration_history.csv"),
+  col_types     = readr::cols(),
+  show_col_types = FALSE
+)
+mat_raw       <- readRDS(
+  here::here("output", "tables", "matriks_korelasi_raw.rds")
+)
+mat_corr      <- readRDS(
+  here::here("output", "tables", "matriks_korelasi_terkoreksi.rds")
+)
+cfa_fit_df    <- readr::read_csv(
+  here::here("output", "tables", "cfa_model_fit_comparison.csv"),
+  col_types     = readr::cols(),
+  show_col_types = FALSE
+)
+cfa_load_df   <- readr::read_csv(
+  here::here("output", "tables", "cfa_factor_loadings.csv"),
+  col_types     = readr::cols(),
+  show_col_types = FALSE
+)
+tab_sub_rank  <- readr::read_csv(
+  here::here("output", "tables", "tabel_ranking_subtes.csv"),
+  col_types     = readr::cols(),
+  show_col_types = FALSE
+)
+tab_comp_rank <- readr::read_csv(
+  here::here("output", "tables", "tabel_ranking_komposit.csv"),
+  col_types     = readr::cols(),
+  show_col_types = FALSE
+)
+desc_comp     <- readr::read_csv(
+  here::here("output", "tables", "tabel_deskriptif_komparasi.csv"),
+  col_types     = readr::cols(),
+  show_col_types = FALSE
+)
+
+```
+
+# Ringkasan Parameter dan Nilai Skalar Eksak (Presisi Penuh)
+
+Berikut adalah daftar nilai eksak hasil komputasi tanpa pembulatan artifisial:
+
+* **Ukuran Sampel ($N$)**: `r nrow(data_clean)`
+* **Jumlah Peserta Hadir ($N_{\text{nasional}}$)**: `r format(N_POPULATION, big.mark = ".", decimal.mark = ",", scientific = FALSE)`
+* **Rerata Komposit Sampel ($\bar{Z}_{\text{sampel}}$)**: `r sprintf('%.15f', mean(data_clean$mean_8))`
+* **Simpangan Baku Komposit Sampel ($s_Z$)**: `r sprintf('%.15f', sd(data_clean$mean_8))`
+* **Korelasi Off-Diagonal Sampel Mentah ($\bar{r}_{\text{off}}$)**: `r sprintf('%.15f', compute_off_diagonal_mean(mat_raw))`
+* **Jumlah Siklus Iterasi Hingga Konvergen ($k$)**: `r nrow(history_df)`
+* **Simpangan Baku Komposit Populasi Terkalibrasi ($S_Z$)**: `r sprintf('%.15f', tail(history_df$sd_composite_out, 1))`
+* **Multiplikator Restriksi Rentang ($\lambda^2 = (S_Z/s_Z)^2 - 1$)**: `r sprintf('%.15f', tail(history_df$lambda_sq, 1))`
+* **Rerata Korelasi Populasi Terkoreksi Thorndike Case III ($\bar{R}_{\text{off}}$)**: `r sprintf('%.15f', tail(history_df$mean_r_corrected, 1))`
+
+# Struktur Faktor Laten: Exploratory & Confirmatory Factor Analysis
+
+## Indeks Kecocokan Model CFA (Robust MLM Estimator)
+
+```{r}
+cfa_fit_t <- t(as.matrix(cfa_fit_df[, -1]))
+colnames(cfa_fit_t) <- paste("Model", seq_len(nrow(cfa_fit_df)))
+
+kable(
+  cfa_fit_t,
+  digits  = 4,
+  caption = paste0(
+    "Perbandingan Goodness-of-Fit Model 1-Faktor (g) vs. Model 2-Faktor ",
+    "(Literasi vs. Numerasi); Model 1 = 1-Faktor (g-General), ",
+    "Model 2 = 2-Faktor (Literasi vs Numerasi)"
+  )
+) %>%
+  kable_styling(latex_options = c("striped", "hold_position"))
+
+```
+
+## Muatan Faktor Terstandarisasi ($\lambda$) & Komunalitas ($R^2$)
+
+```{r}
+kable(
+  cfa_load_df,
+  digits  = 4,
+  caption = "Estimasi Muatan Faktor Terstandarisasi Model 2-Faktor Konfirmatori"
+) %>%
+  kable_styling(latex_options = "striped")
+
+```
+
+# Visualisasi Struktur Korelasi & Analisis Retensi Faktor
+
+```{r, fig.show='hold', out.width='33%'}
+knitr::include_graphics(here::here("output", "figures", "heatmap_raw.png"))
+knitr::include_graphics(here::here("output", "figures", "heatmap_thorndike.png"))
+knitr::include_graphics(here::here("output", "figures", "scree_parallel_plot.png"))
+
+```
+
+# Korelasi Subtes ke Komposit Sampel ($r_{iZ}$)
+
+```{r}
+r_iz_table <- tibble::tibble(
+  Subtes = SUBTESTS,
+  `Korelasi ke Mean 8 (r_iZ)` = vapply(
+    SUBTESTS,
+    function(s) cor(data_clean[[s]], data_clean$mean_8),
+    numeric(1)
+  )
+)
+
+kable(
+  r_iz_table,
+  digits  = 15,
+  caption = "Nilai Eksak Korelasi Tiap Subtes terhadap Komposit Rerata Sampel"
+) %>%
+  kable_styling(latex_options = "striped")
+
+```
+
+# Tabel Statistik Deskriptif: Nasional vs Sampel
+
+```{r}
+kable(
+  desc_comp[, c("subject_name", "mean_sample", "sd_sample", "median_sample",
+                "min_sample", "max_sample")],
+  digits  = 6,
+  label   = "desc_panel_a",
+  caption = "Perbandingan Parameter Univariat Nasional vs Sampel: Panel A, Statistik Sampel"
+) %>%
+  kable_styling(latex_options = c("striped", "hold_position"))
+
+kable(
+  desc_comp[, c("subject_name", "mean_nat", "sd_nat", "min_nat", "max_nat")],
+  digits  = 6,
+  label   = "desc_panel_b",
+  caption = "Perbandingan Parameter Univariat Nasional vs Sampel: Panel B, Parameter Nasional Tidak Resmi"
+) %>%
+  kable_styling(latex_options = c("striped", "hold_position"))
+
+kable(
+  desc_comp[, c("subject_name", "mean_diff", "sd_diff")],
+  digits  = 6,
+  label   = "desc_panel_c",
+  caption = "Perbandingan Parameter Univariat Nasional vs Sampel: Panel C, Selisih Sampel terhadap Nasional"
+) %>%
+  kable_styling(latex_options = c("striped", "hold_position"))
+
+```
+
+# Riwayat Lengkap Fixed-Point Iteration
+
+```{r}
+kable(
+  history_df,
+  digits    = 15,
+  longtable = TRUE,
+  caption   = "Log Lengkap Konvergensi Fixed-Point Iteration Thorndike Case III"
+) %>%
+  kable_styling(latex_options = c("striped", "repeat_header"))
+
+```
+
+# Matriks Translasi Persentil Standar
+
+## Per Subtes (SD Nasional Univariat)
+
+```{r}
+kable(
+  tab_sub_rank,
+  digits    = 6,
+  longtable = TRUE,
+  caption   = paste0(
+    "Translasi Titik Benchmark Standar (M\u00b1kSD) ke Skor Mentah per Subtes"
+  )
+) %>%
+  kable_styling(
+    latex_options = c("striped", "repeat_header"),
+    font_size     = 8
+  )
+
+```
+
+## Komposit Lintas Skenario Korelasi
+
+```{r}
+kable(
+  tab_comp_rank,
+  digits    = 6,
+  longtable = TRUE,
+  caption   = paste0(
+    "Translasi Titik Benchmark Standar (M\u00b1kSD) ke Skor Komposit ",
+    "Lintas Skenario Korelasi (Persentil Identik per Baris, Skor Berbeda ",
+    "per Skenario)"
+  )
+) %>%
+  kable_styling(
+    latex_options = c("striped", "repeat_header"),
+    font_size     = 8
+  )
+
+```
+
+# Informasi Sesi Reproduksibilitas (*Session Info*)
+
+```{r}
+sessionInfo()
+
+```

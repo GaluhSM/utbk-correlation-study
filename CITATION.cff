@@ -1,0 +1,36 @@
+cff-version: 1.2.0
+message: "If you use this code, data, or calculator, please cite my paper below (preferred-citation)."
+type: software
+title: "UTBK-SNBT 2026 Inter-Subtest Correlation & Latent Factor Structure Replication"
+abstract: "Paket replikasi R, data, dan kalkulator web untuk estimasi korelasi antarsubtes, struktur faktor laten, koreksi pembatasan rentang (Thorndike Case III), dan perkiraan peringkat nasional UTBK-SNBT 2026."
+authors:
+  - family-names: "Saputra"
+    given-names: "Galuh"
+    orcid: "https://orcid.org/0009-0009-7845-8015"
+    email: "galmei.id@gmail.com"
+repository-code: "https://github.com/GaluhSM/utbk-correlation-study"
+url: "https://galuhsm.github.io/utbk-correlation-study/"
+version: "1.0"
+date-released: "2026-10-28"
+keywords:
+  - UTBK-SNBT
+  - korelasi antarsubtes
+  - Thorndike Case III
+  - pembatasan rentang
+  - analisis faktor
+# TODO: Setelah rilis v1.0 di GitHub memunculkan DOI Zenodo, hapus tanda # di baris
+# berikut dan isi DOI-nya (DOI proyek, bukan DOI versi):
+# doi: "10.5281/zenodo.0000000"
+preferred-citation:
+  type: article
+  status: preprint
+  authors:
+    - family-names: "Saputra"
+      given-names: "Galuh"
+      orcid: "https://orcid.org/0009-0009-7845-8015"
+  title: "Seberapa Kuat Subtes UTBK-SNBT 2026 Saling Berkorelasi? Estimasi dari Data Crowdsourced dan Implikasinya bagi Estimasi Peringkat Nasional"
+  year: 2026
+  languages:
+    - ind
+  # TODO: Setelah EdArXiv menerima preprint, hapus tanda # dan isi DOI preprint:
+  # doi: "10.xxxx/osf.io/xxxxx"

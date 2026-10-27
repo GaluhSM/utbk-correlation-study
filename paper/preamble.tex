@@ -1,0 +1,154 @@
+% Paket dan format naskah: satu kolom, gaya APA 7.
+
+% Ukuran kertas: APA 7 memakai US Letter (8,5 x 11 inci), margin 1 inci.
+% Ganti ke a4paper kalau jurnal tujuan meminta A4.
+\usepackage[letterpaper,margin=1in]{geometry}
+
+% Encoding dan font
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{mathptmx}      % mirip Times, termasuk rumus
+\usepackage{textcomp}      % simbol tambahan
+\usepackage[stretch=30]{microtype}
+
+% Untuk Times New Roman asli: pakai XeLaTeX/LuaLaTeX dan pasang fontnya.
+% Nonaktifkan mathptmx, lalu aktifkan dua baris ini:
+% \usepackage{fontspec}
+% \setmainfont{Times New Roman}
+
+% Bahasa
+% Bahasa utama ditaruh terakhir.
+\usepackage[english,indonesian]{babel}
+% Untuk teks Inggris:
+%   \begin{otherlanguage}{english} ... \end{otherlanguage}
+
+% Spasi dan paragraf
+\usepackage{setspace}
+\doublespacing                       % spasi ganda
+\raggedbottom % jangan regangkan isi halaman yang pendek
+\usepackage{indentfirst}
+\setlength{\parindent}{1.27cm}       % inden 0.5 inci
+\setlength{\parskip}{0pt}
+
+% Jangan penggal kata; longgarkan jarak agar teks tetap masuk margin.
+\hyphenpenalty=10000
+\exhyphenpenalty=10000
+\setlength{\emergencystretch}{3em}
+
+% Judul bagian, gaya APA 7
+\usepackage{titlesec}
+\setcounter{secnumdepth}{0}          % tanpa nomor bagian
+
+% Level 1 -> tengah, tebal
+\titleformat{\section}
+  {\centering\bfseries\fontsize{12}{14}\selectfont}{}{0em}{}
+\titlespacing{\section}{0pt}{*3}{*1.5}
+
+% Level 2 -> rata kiri, tebal
+\titleformat{\subsection}
+  {\bfseries\fontsize{12}{14}\selectfont}{}{0em}{}
+\titlespacing{\subsection}{0pt}{*2.5}{*1}
+
+% Level 3 -> rata kiri, tebal-miring
+\titleformat{\subsubsection}
+  {\bfseries\itshape\fontsize{12}{14}\selectfont}{}{0em}{}
+\titlespacing{\subsubsection}{0pt}{*2}{*0.8}
+
+% Level 4 -> inden, tebal, menyatu dengan paragraf, pakai titik
+\titleformat{\paragraph}[runin]
+  {\bfseries\fontsize{12}{14}\selectfont}{}{0em}{}[.\ ]
+\titlespacing{\paragraph}{1.27cm}{*1.5}{1em}
+
+% Level 5 -> seperti level 4, tapi tebal-miring
+\titleformat{\subparagraph}[runin]
+  {\bfseries\itshape\fontsize{12}{14}\selectfont}{}{0em}{}[.\ ]
+\titlespacing{\subparagraph}{1.27cm}{*1.5}{1em}
+
+% Header: judul pendek dan nomor halaman
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\fancyhf{}
+\newcommand{\runninghead}[1]{\fancyhead[L]{\footnotesize\MakeUppercase{#1}}}
+\fancyhead[R]{\footnotesize\thepage}
+\renewcommand{\headrulewidth}{0pt}
+\setlength{\headheight}{14pt}
+
+% Tabel, gambar, dan caption
+\usepackage{graphicx}
+\usepackage{float}
+\floatplacement{table}{H}
+\usepackage{booktabs}
+\usepackage{array}
+\usepackage{multirow}
+\usepackage{caption}
+\captionsetup{labelfont=bf, labelsep=period, justification=raggedright,
+              singlelinecheck=false, font=small}
+\captionsetup[table]{position=above}   % judul di atas tabel
+
+\usepackage{etoolbox}
+\AtBeginEnvironment{tabular}{\small}
+\setlength{\tabcolsep}{4pt}
+\let\origresizebox\resizebox
+\renewcommand{\resizebox}[3]{%
+  \origresizebox{\ifdim\width>#1 #1\else\width\fi}{#2}{#3}}
+% Paksa label bahasa Indonesia meski english jadi bahasa utama TeX.
+\renewcommand{\tablename}{Tabel}
+\renewcommand{\figurename}{Gambar}
+
+% Rumus dan simbol
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{icomma}      % koma desimal tanpa spasi ekstra di mode matematika ($0,425$)
+
+% Daftar
+\usepackage{enumitem}
+\setlist{noitemsep, topsep=4pt}
+
+% Sitasi dan daftar pustaka, gaya APA 7
+% Perlu biblatex-apa dan biber.
+\usepackage{csquotes}
+% Pakai label bibliografi Inggris; naskah tetap bahasa Indonesia.
+\DeclareQuoteAlias{english}{indonesian}
+\usepackage[
+  style=apa,
+  backend=biber,
+  sorting=nyt,
+  sortcites=true,
+  uniquename=false,
+  uniquelist=false
+]{biblatex}
+\addbibresource{references.bib}
+% Petakan locale Indonesian ke modul english-apa (indonesian-apa.lbx tidak ada).
+\DeclareLanguageMapping{indonesian}{english-apa}
+
+% Padanan Indonesia pada sitasi APA 7: "et al." menjadi "dkk." dan "and" pada
+% sitasi naratif menjadi "dan" ("&" tetap dipakai pada sitasi dalam kurung).
+\DefineBibliographyStrings{english}{andothers = {dkk\adddot}, and = {dan}}
+\DefineBibliographyStrings{indonesian}{andothers = {dkk\adddot}, and = {dan}}
+
+% Contoh sitasi:
+%   \autocite{key}      -> (Penulis, Tahun)
+%   \textcite{key}       -> Penulis (Tahun)
+%   \parencite{key}       -> (Penulis, Tahun)
+%   \autocite[hlm.\ 12]{key} -> (Penulis, Tahun, hlm. 12)
+%
+% Aturan APA 7: bila nama penulis menjadi bagian kalimat, tulis nama hanya lewat
+% \textcite (Penulis (Tahun), dua penulis "A dan B (Tahun)", tiga atau lebih "A dkk. (Tahun)").
+% Bila nama tidak disebut, pakai \autocite atau \parencite ((Penulis, Tahun), dua penulis
+% "(A & B, Tahun)"). Jangan menulis nama penulis secara manual di samping sitasi.
+
+% Tautan
+% URL panjang boleh pindah baris tanpa tanda hubung.
+\usepackage{xurl}
+\usepackage[hidelinks]{hyperref} % tanpa kotak warna
+\usepackage{orcidlink} % Loads the ORCID link package
+\urlstyle{same}
+
+% Longgarkan spasi daftar pustaka untuk DOI/URL panjang.
+\AtBeginBibliography{%
+  \sloppy
+  \setlength{\emergencystretch}{3em}%
+}
+
+% Warna
+\usepackage{xcolor}   % untuk menandai revisi

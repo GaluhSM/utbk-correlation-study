@@ -1,0 +1,36 @@
+# Sesi R & Workspace Lokal
+.Rhistory
+.RData
+.RDataTmp
+.Rproj.user/
+.Ruserdata
+
+# Snapshot Environment renv (kunci dependensi tetap pada renv.lock)
+renv/library/
+renv/local/
+renv/cellar/
+renv/lock/
+renv/python/
+renv/sandbox/
+renv/staging/
+
+# Berkas Sementara Sistem Operasi
+.DS_Store
+Thumbs.db
+ehthumbs.db
+
+# Berkas Bantu Kompilasi LaTeX & Knitr
+*.aux
+*.log
+*.out
+*.toc
+*.bbl
+*.bcf
+*.blg
+*.run.xml
+*.synctex.gz
+*.fls
+*.fdb_latexmk
+
+# Luaran Artefak Otomatis (Dihasilkan Ulang via run_all.R)
+output/reports/*.pdf

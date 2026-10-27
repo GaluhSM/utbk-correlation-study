@@ -1,0 +1,11 @@
+var_name,var_label,var_type_r,measurement_scale,unit,min_value,max_value,levels,missing_codes,source_question,derived_from,transformation,notes
+pu,Penalaran Umum,numeric,interval,skor,306.0,894.43,NA,NA,Subtes 1,NA,NA,"Parameter nasional: Mean=500, SD=71.52"
+ppu,Pengetahuan dan Pemahaman Umum,numeric,interval,skor,231.92,935.37,NA,NA,Subtes 2,NA,NA,"Parameter nasional: Mean=500, SD=100.00"
+pbm,Pemahaman Bacaan dan Menulis,numeric,interval,skor,229.8,940.77,NA,NA,Subtes 3,NA,NA,"Parameter nasional: Mean=500, SD=100.00"
+pk,Pengetahuan Kuantitatif,numeric,interval,skor,357.1,1173.55,NA,NA,Subtes 4,NA,NA,"Parameter nasional: Mean=500, SD=100.00"
+lbi_saintek,Literasi Bahasa Indonesia Saintek,numeric,interval,skor,246.09,953.68,NA,NA,Subtes 5,NA,NA,"Parameter nasional: Mean=500, SD=100.00"
+lbi_soshum,Literasi Bahasa Indonesia Soshum,numeric,interval,skor,211.44,916.66,NA,NA,Subtes 6,NA,NA,"Parameter nasional: Mean=500, SD=100.00"
+lbe,Literasi Bahasa Inggris,numeric,interval,skor,317.17,890.73,NA,NA,Subtes 7,NA,NA,"Parameter nasional: Mean=500, SD=100.00"
+pm,Penalaran Matematika,numeric,interval,skor,266.9,997.7,NA,NA,Subtes 8,NA,NA,"Parameter nasional: Mean=500, SD=100.00"
+stage,Tahap Penjaringan Data,numeric,ordinal,tahap,1,19,1..19,NA,Metadata pengumpulan,NA,NA,Mengelompokkan asal utas media sosial
+mean_8,Komposit Rerata 8 Subtes,numeric,interval,skor,NA,NA,NA,NA,Kalkulasi komposit,pu..pm,"(pu+ppu+pbm+pk+lbi_saintek+lbi_soshum+lbe+pm)/8",Skor komposit berbobot setara

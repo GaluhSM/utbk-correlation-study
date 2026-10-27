@@ -1,0 +1,20 @@
+stage,stage_code,stage_name,category,n_cumulative,r_off_diagonal
+1,utas_1,Utas Tunggal & DM Pribadi,Campuran,216,0.2972309294814241
+2,unpad,Utas Khusus Unpad,PTN Khusus,249,0.30021632202418047
+3,pens,Utas Khusus PENS,PTN Khusus,255,0.29820236340180045
+4,unsoed,Utas Khusus Unsoed,PTN Khusus,289,0.29810438063135986
+5,unesa,Utas Khusus Unesa,PTN Khusus,300,0.29334237541522085
+6,unnes,Utas Khusus Unnes,PTN Khusus,320,0.2856301102325009
+7,its,Utas Khusus ITS,PTN Khusus,416,0.3454185624367941
+8,undip,Utas Khusus Undip,PTN Khusus,567,0.31595662834551813
+9,ipb,Utas Khusus IPB,PTN Khusus,613,0.30435225397222093
+10,uns,Utas Khusus UNS,PTN Khusus,675,0.2942716784405534
+11,ub,Utas Khusus UB,PTN Khusus,816,0.26914112965106246
+12,upi,Utas Khusus UPI,PTN Khusus,847,0.2671861950301766
+13,ugm,Utas Khusus UGM,PTN Khusus,992,0.2800998307872999
+14,unair,Utas Khusus Unair,PTN Khusus,1095,0.2701344754943832
+15,pnj,Utas Khusus PNJ,PTN Khusus,1107,0.26907589270458027
+16,ui,Utas Khusus UI,PTN Khusus,1319,0.2861494290096819
+17,itb,Utas Khusus ITB,PTN Khusus,1459,0.3053495147427847
+18,inklusif,Utas Terbuka Inklusif (@sbmptnfess),Inklusif,1709,0.30931408320867176
+19,utbkcak,Akun Publik @utbkcak,Inklusif,1886,0.3003805718218561

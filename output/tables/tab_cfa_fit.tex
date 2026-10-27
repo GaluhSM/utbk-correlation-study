@@ -1,0 +1,21 @@
+\begin{table}[H]
+    \centering
+    \caption{Perbandingan Indeks Kecocokan Model 1 (\textit{g-factor} Tunggal) dan Model 2 (Dua Faktor Berkorelasi) pada CFA}
+    \label{tab:cfa_fit}
+    \begin{spacing}{1.0}
+    \resizebox{\textwidth}{!}{%
+    \begin{tabular}{lcccccccc}
+        \toprule
+        Model & $\chi^2_{\text{SB}}$ & $df$ & CFI & TLI & RMSEA [90\% CI] & SRMR & AIC & $\Delta\chi^2$ ($df$) \\
+        \midrule
+        Model 1: 1-Faktor (g-General)    & 220,17 & 20 & 0,932 & 0,904 & 0,073 [0,065; 0,082] & 0,042 & 173638,9 & - \\
+        Model 2: 2-Faktor (Literasi vs Numerasi) & 117,26 & 19 & 0,967 & 0,951 & 0,052 [0,044; 0,062] & 0,031 & 173536,4 & 91,55 (1)$^{***}$ \\
+        \bottomrule
+    \end{tabular}%
+    }
+    \end{spacing}
+    \vspace{2mm}
+    \begin{flushleft}
+    \footnotesize\textit{Catatan.} $N = 1.886$. Model 1 memuat \textit{g-factor} tunggal, sedangkan Model 2 memuat dua faktor berkorelasi (Literasi dan Numerasi). Estimator yang dipakai adalah \textit{robust maximum likelihood} (MLM). $\chi^2_{\text{SB}}$ adalah \textit{scaled chi-square} Satorra--Bentler; CFI = \textit{Comparative Fit Index}; TLI = \textit{Tucker--Lewis Index}; RMSEA = \textit{Root Mean Square Error of Approximation}; SRMR = \textit{Standardized Root Mean Square Residual}; AIC = \textit{Akaike Information Criterion}. Signifikansi $\Delta\chi^2$: $^{*}p < 0,05$; $^{**}p < 0,01$; $^{***}p < 0,001$ (dihitung dari nilai $p$ eksak).
+    \end{flushleft}
+\end{table}

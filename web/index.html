@@ -1,0 +1,35 @@
+<!doctype html>
+<html lang="id">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'self'; style-src 'self'; img-src 'self' data:; connect-src 'none'; base-uri 'none'; form-action 'none'">
+<meta name="referrer" content="no-referrer">
+<meta name="description" content="Perkiraan kasar peringkat nasional UTBK-SNBT 2026 dari delapan skor subtes. Berjalan sepenuhnya di perangkatmu.">
+<title>Perkiraan Peringkat UTBK-SNBT 2026</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<main>
+  <h1>Perkiraan Peringkat UTBK-SNBT 2026</h1>
+  <p>Masukkan kedelapan skor subtesmu untuk memperkirakan posisimu di antara peserta nasional. Hasilnya perkiraan kasar dari parameter nasional tidak resmi: bukan peringkat resmi dan bukan prediksi lolos. Semua perhitungan berjalan di perangkatmu; tidak ada data yang dikirim atau disimpan.</p>
+
+  <form id="form" novalidate autocomplete="off">
+    <div id="bidang"></div>
+    <p id="galat" role="alert" hidden></p>
+    <p class="tombol">
+      <button type="submit">Hitung</button>
+      <button type="button" id="hapus">Hapus</button>
+    </p>
+  </form>
+
+  <section id="hasil" aria-live="polite" hidden></section>
+
+  <footer id="kaki"></footer>
+</main>
+<noscript><p>Halaman ini memerlukan JavaScript untuk berjalan di perangkatmu.</p></noscript>
+<script src="data.js"></script>
+<script src="calc.js"></script>
+<script src="app.js"></script>
+</body>
+</html>

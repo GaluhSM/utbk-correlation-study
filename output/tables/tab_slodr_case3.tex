@@ -1,0 +1,24 @@
+\begin{table}[H]
+    \centering
+    \caption{Kinerja Koreksi Thorndike Case III pada Populasi Simulasi dengan Korelasi yang Menurun pada Skor Tinggi (SLODR)}
+    \label{tab:slodr_case3}
+    \begin{spacing}{1.0}
+    \resizebox{\textwidth}{!}{%
+    \begin{tabular}{ccccccccc}
+        \toprule
+        & \multicolumn{2}{c}{Korelasi Bersyarat} & \multicolumn{3}{c}{$\bar{R}$} & \multicolumn{3}{c}{$S_Z$} \\
+        \cmidrule(lr){2-3} \cmidrule(lr){4-6} \cmidrule(lr){7-9}
+        $b$ & $g=-1$ & $g=+1$ & Benar & Case III & Bias & Benar & Case III & Bias \\
+        \midrule
+        0,00 & 0,440 & 0,440 & 0,440 & 0,437 & -0,002 & 68,9 & 68,7 & -0,2 \\
+        0,02 & 0,527 & 0,470 & 0,499 & 0,437 & -0,061 & 72,3 & 68,7 & -3,6 \\
+        0,04 & 0,620 & 0,501 & 0,561 & 0,437 & -0,123 & 75,7 & 68,7 & -7,0 \\
+        \bottomrule
+    \end{tabular}%
+    }
+    \end{spacing}
+    \vspace{2mm}
+    \begin{flushleft}
+    \footnotesize\textit{Catatan.} SLODR adalah \textit{Spearman's Law of Diminishing Returns}. Populasi Gaussian dengan $SD$ nasional tidak resmi dan muatan $m(g) = m_0 - b\,g$; sampel terseleksi lewat skor komposit (probabilitas seleksi logistik) dikalibrasi agar sama dengan sampel teramati (rerata skor komposit 657,8, $SD$ 53,8, rerata korelasi \textit{raw sample} 0,300). Karena sampel sama pada semua $b$, taksiran Case III identik; kolom Benar adalah nilai pada populasi simulasi. Bias = Case III $-$ Benar.
+    \end{flushleft}
+\end{table}

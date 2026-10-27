@@ -1,0 +1,22 @@
+# Berkas bantu LaTeX
+*.aux
+*.log
+*.out
+*.toc
+*.bbl
+*.bcf
+*.blg
+*.run.xml
+*.synctex.gz
+*.fls
+*.fdb_latexmk
+*.nav
+*.snm
+*.vrb
+
+# Berkas PDF hasil kompilasi (hapus baris ini bila ingin turut disertakan)
+*.pdf
+
+# Sistem operasi
+.DS_Store
+Thumbs.db

@@ -1,0 +1,27 @@
+\begin{table}[H]
+    \centering
+    \caption{Sensitivitas Persentil dan Skor Komposit terhadap Asumsi Normal dengan Marginal Johnson SB dan \textit{Copula} Gaussian}
+    \label{tab:nonnormal_sim}
+    \begin{spacing}{1.0}
+    \resizebox{\textwidth}{!}{%
+    \begin{tabular}{lccccccc}
+        \toprule
+        & \multicolumn{3}{c}{Peluang Ekor (\%)} & \multicolumn{4}{c}{Skor Komposit pada Persentil Normal} \\
+        \cmidrule(lr){2-4} \cmidrule(lr){5-8}
+        Titik & Normal & Simulasi A & Simulasi B & Normal & Simulasi A & Simulasi B & Selisih B \\
+        \midrule
+        $M - 3\,S_Z$ & 0,135 & $<0{,}001$ & $<0{,}001$ & 296,9 & 341,6 & 342,5 & 45,7 \\
+        $M - 2\,S_Z$ & 2,275 & 0,891 & 0,834 & 364,6 & 380,2 & 381,1 & 16,5 \\
+        $M - 1\,S_Z$ & 15,866 & 16,275 & 16,014 & 432,3 & 431,3 & 431,9 & -0,3 \\
+        $M + 1\,S_Z$ & 15,866 & 16,297 & 16,108 & 567,7 & 569,1 & 568,5 & 0,8 \\
+        $M + 2\,S_Z$ & 2,275 & 3,439 & 3,325 & 635,4 & 650,2 & 648,8 & 13,3 \\
+        $M + 3\,S_Z$ & 0,135 & 0,407 & 0,380 & 703,1 & 732,3 & 730,1 & 26,9 \\
+        \bottomrule
+    \end{tabular}%
+    }
+    \end{spacing}
+    \vspace{2mm}
+    \begin{flushleft}
+    \footnotesize\textit{Catatan.} Skor komposit adalah rerata delapan subtes, dengan 1.000.000 peserta virtual. Marginal tiap subtes dihampiri distribusi Johnson SB yang dicocokkan ke kuantil, rerata, dan $SD$ nasional tidak resmi, dan dependensi dimodelkan dengan \textit{copula} Gaussian berkorelasi seragam. Simulasi A memakai korelasi laten $= 0,425$ ($\bar{R}$ Thorndike) dan menghasilkan $SD$ skor komposit $= 68,3$. Simulasi B memakai korelasi laten $= 0,415$, dikalibrasi agar $SD$ skor komposit $= S_Z = 67,72$. Skor komposit simulasi dipusatkan ke rerata $500$ (pergeseran 2,39 poin). Titik $M \pm k\,S_Z$ dengan $M = 500$. Peluang ekor mengacu pada sisi bawah untuk $k<0$ dan sisi atas untuk $k>0$. Selisih B = skor simulasi B $-$ skor normal.
+    \end{flushleft}
+\end{table}

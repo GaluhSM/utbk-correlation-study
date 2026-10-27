@@ -1,0 +1,3 @@
+model,phi_literasi_numerasi,korelasi_residual_lbi
+2-faktor utama (tanpa kovarians residual),0.8128660784118421,NA
+2-faktor + kovarians residual antar-LBI,0.8156371609244827,0.10757198689409053

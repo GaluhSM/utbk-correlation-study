@@ -1,0 +1,21 @@
+\begin{table}[H]
+    \centering
+    \caption{Analisis Sensitivitas CFA Model Dua Faktor dengan dan tanpa Kovarians Residual antara LBI Saintek dan LBI Soshum}
+    \label{tab:sens_cfa}
+    \begin{spacing}{1.0}
+    \resizebox{\textwidth}{!}{%
+    \begin{tabular}{lcccccccccc}
+        \toprule
+        Model & $\chi^2_{\text{SB}}$ & $df$ & CFI & RMSEA & SRMR & AIC & BIC & $\phi$ & $r_{\text{resid}}$ & $\Delta\chi^2$ ($df$) \\
+        \midrule
+        Utama: 2-faktor & 117,3 & 19 & 0,967 & 0,052 & 0,031 & 173536 & 173631 & 0,813 & - & - \\
+        2-faktor + kovarians residual LBI & 99,1 & 18 & 0,973 & 0,049 & 0,028 & 173520 & 173620 & 0,816 & 0,108 & 17,3 (1)$^{***}$ \\
+        \bottomrule
+    \end{tabular}%
+    }
+    \end{spacing}
+    \vspace{2mm}
+    \begin{flushleft}
+    \footnotesize\textit{Catatan.} $N = 1.886$. Estimator yang dipakai adalah \textit{robust maximum likelihood} (MLM). Model utama identik dengan Model 2 pada Tabel~\ref{tab:cfa_fit}. $\phi$ = korelasi antarfaktor laten terstandar; $r_{\text{resid}}$ = korelasi residual terstandar antara LBI Saintek dan LBI Soshum. CFI = \textit{Comparative Fit Index}; RMSEA = \textit{Root Mean Square Error of Approximation}; SRMR = \textit{Standardized Root Mean Square Residual}; AIC = \textit{Akaike Information Criterion}; BIC = \textit{Bayesian Information Criterion}. Signifikansi $\Delta\chi^2$: $^{*}p < 0,05$; $^{**}p < 0,01$; $^{***}p < 0,001$ (dihitung dari nilai $p$ eksak).
+    \end{flushleft}
+\end{table}
