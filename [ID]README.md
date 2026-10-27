@@ -165,7 +165,7 @@ Proyek ini memakai **dual license**, sebagaimana dirinci pada [`LICENSE`](./LICE
 ## Sitasi
 
 ``` bibtex
-@article{placeholder2026utbk,
+@article{saputra2026utbk,
   author = {Saputra, Galuh},
   title  = {How Strongly Correlated Are the Subtests in the 2026 Indonesian University Entrance Exam (UTBK-SNBT)? Crowdsourced Estimates and Implications for National Ranking},
   year   = {2026},
