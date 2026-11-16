@@ -1,5 +1,3 @@
-/* Antarmuka kalkulator. Semua teks dibuat lewat DOM (textContent), tanpa
- * innerHTML, tanpa permintaan jaringan, tanpa penyimpanan apa pun. */
 (function () {
   'use strict';
   var D = window.UTBK_DATA, C = window.UTBKCalc;
@@ -27,12 +25,11 @@
     return e;
   }
 
-  // ---- format ---------------------------------------------------------------
   function fmtRank(p) {
     var b = C.bulatPeringkat(p, N);
     return (b.kurangDari ? 'kurang dari ' : '') + nf0.format(b.nilai);
   }
-  function fmtAtas(x) {                 // persen teratas
+  function fmtAtas(x) {               
     if (x < 0.01) return '< 0,01';
     if (x < 1) return new Intl.NumberFormat('id-ID', { maximumSignificantDigits: 2 }).format(x);
     return nf1.format(x);
@@ -42,13 +39,27 @@
     return (atas < 1 ? nf2 : nf1).format(p);
   }
 
-  // ---- formulir -------------------------------------------------------------
+  var CONTOH = {
+    pu: '645,37', ppu: '655,85', pbm: '668,64', pk: '727,34',
+    lbi_saintek: '647,87', lbi_soshum: '669,55', lbe: '670,01', pm: '676,96'
+  };
+
+  function fmtAtasSalin(x) {
+    if (x < 0.01) return '<0.01';
+    if (x < 1) return String(Number(x.toPrecision(2)));
+    return String(Number(x.toFixed(1)));
+  }
+
   var bidang = document.getElementById('bidang');
-  D.subtes.forEach(function (st) {
+  var inputs = [];
+  D.subtes.forEach(function (st, i) {
+    var el = h('input', {
+      id: 'in-' + st.kode, type: 'text', inputmode: 'decimal', autocomplete: 'off', spellcheck: 'false',
+      placeholder: CONTOH[st.kode] || '', enterkeyhint: i === D.subtes.length - 1 ? 'go' : 'next'
+    });
+    inputs.push(el);
     bidang.appendChild(h('div', { 'class': 'baris' },
-      h('label', { 'for': 'in-' + st.kode }, st.label + ' (' + st.singkat + ')'),
-      h('input', { id: 'in-' + st.kode, type: 'text', inputmode: 'decimal', autocomplete: 'off', spellcheck: 'false' })
-    ));
+      h('label', { 'for': 'in-' + st.kode }, st.label + ' (' + st.singkat + ')'), el));
   });
 
   var form = document.getElementById('form');
@@ -56,8 +67,9 @@
   var hasilEl = document.getElementById('hasil');
   var terakhir = null;
 
-  form.addEventListener('submit', function (ev) {
-    ev.preventDefault();
+  form.addEventListener('submit', function (ev) { ev.preventDefault(); hitung(); });
+
+  function hitung() {
     var skor = {}, salah = [], kosong = 0;
     D.subtes.forEach(function (st) {
       var el = document.getElementById('in-' + st.kode);
@@ -77,18 +89,45 @@
     }
     galat.hidden = true;
     tampilkan(skor);
+  }
+
+  function pindah(j) { inputs[j].focus(); inputs[j].select(); }
+  function semuaTerisi() {
+    return inputs.every(function (el) { return el.value.trim() !== ''; });
+  }
+  form.addEventListener('keydown', function (ev) {
+    var i = inputs.indexOf(ev.target);
+    if (i < 0 || ev.isComposing || ev.altKey || ev.ctrlKey || ev.metaKey || ev.shiftKey) return;
+    if (ev.key === 'ArrowDown') {
+      ev.preventDefault();
+      pindah(Math.min(i + 1, inputs.length - 1));
+    } else if (ev.key === 'ArrowUp') {
+      ev.preventDefault();
+      pindah(Math.max(i - 1, 0));
+    } else if (ev.key === 'Enter') {
+      ev.preventDefault();
+      if (semuaTerisi()) { hitung(); return; }
+      if (i < inputs.length - 1) { pindah(i + 1); return; }
+      var kosongPertama = inputs.findIndex(function (el) { return el.value.trim() === ''; });
+      pindah(kosongPertama < 0 ? i : kosongPertama);
+    }
+  });
+
+  document.getElementById('contoh').addEventListener('click', function () {
+    D.subtes.forEach(function (st, i) {
+      inputs[i].value = CONTOH[st.kode] || '';
+      inputs[i].setAttribute('aria-invalid', 'false');
+    });
+    galat.hidden = true;
+    document.querySelector('#form button[type=submit]').focus();
   });
 
   document.getElementById('hapus').addEventListener('click', function () {
-    D.subtes.forEach(function (st) {
-      var el = document.getElementById('in-' + st.kode);
-      el.value = ''; el.setAttribute('aria-invalid', 'false');
-    });
+    inputs.forEach(function (el) { el.value = ''; el.setAttribute('aria-invalid', 'false'); });
     galat.hidden = true; hasilEl.hidden = true; hasilEl.textContent = ''; terakhir = null;
-    document.getElementById('in-' + D.subtes[0].kode).focus();
+    inputs[0].focus();
   });
 
-  // ---- perhitungan + tampilan ------------------------------------------------
   function tampilkan(skor) {
     var vektor = D.subtes.map(function (st) { return skor[st.kode]; });
     var komposit = C.rerata(vektor);
@@ -110,18 +149,30 @@
 
     var rentangTeks = fmtRank(pMin) === fmtRank(pMax) ? fmtRank(pMin) : fmtRank(pMin) + ' – ' + fmtRank(pMax);
     terakhir = {
-      komposit: komposit, tengah: fmtRank(utama.r.peringkat), rentang: rentangTeks,
-      atas: fmtAtas(utama.r.atasPct)
+      salin: 'Top ' + fmtAtasSalin(utama.r.atasPct) + '% (Avg. Score ' + komposit.toFixed(2) +
+        ') National in UTBK-SNBT 2026'
     };
 
     hasilEl.textContent = '';
-    hasilEl.appendChild(h('h2', null, 'Hasil'));
+    hasilEl.appendChild(h('h2', null, 'Ringkasan'));
 
     if (luar.length) {
       hasilEl.appendChild(h('p', { 'class': 'catatan' },
         'Perhatian: skor ' + luar.map(function (x) { return x.st.singkat; }).join(', ') +
         ' berada di luar rentang minimum–maksimum nasional tidak resmi. Periksa kembali inputmu.'));
     }
+
+    var peringkatBulat = Math.max(1, Math.round(utama.r.peringkat));
+    hasilEl.appendChild(h('p', { 'class': 'ringkasan' },
+      'Berdasarkan perkiraan, skor UTBK kamu (rerata ', h('strong', null, nf2.format(komposit)),
+      ') berada di ', h('strong', null, 'top ' + fmtAtas(utama.r.atasPct) + '%'),
+      ' peserta nasional, dengan peringkat sekitar ', h('strong', null, nf0.format(peringkatBulat)),
+      ' dari ' + nf0.format(N) + ' peserta hadir.'));
+    hasilEl.appendChild(h('p', { 'class': 'catatan' },
+      'Memakai estimasi Thorndike Case III (r ≈ ' + nf3.format(utama.s.r) + '). Kisaran peringkat antarskenario korelasi: ' +
+      rentangTeks + '. Perkiraan kasar, bukan peringkat resmi dan bukan prediksi lolos.'));
+
+    hasilEl.appendChild(h('h2', null, 'Hasil'));
 
     hasilEl.appendChild(h('dl', null,
       h('dt', null, 'Skor komposit'),
@@ -164,10 +215,8 @@
   }
 
   function salin() {
-    var t = terakhir, s = document.getElementById('status');
-    var teks = 'Perkiraan kasar UTBK-SNBT 2026: skor komposit ' + nf2.format(t.komposit) +
-      '; peringkat nasional sekitar ' + t.tengah + ' (kisaran ' + t.rentang + ') dari ' + nf0.format(N) +
-      ' peserta hadir; teratas ' + t.atas + '%. Parameter nasional tidak resmi; bukan peringkat resmi dan bukan prediksi lolos.';
+    var s = document.getElementById('status');
+    var teks = terakhir.salin;
     if (!navigator.clipboard) { s.textContent = 'Peramban ini tidak mengizinkan penyalinan otomatis.'; return; }
     navigator.clipboard.writeText(teks).then(
       function () { s.textContent = 'Tersalin.'; },
@@ -186,8 +235,6 @@
     });
   });
 
-  // ---- komponen --------------------------------------------------------------
-  // Batang kisaran pada skala log peringkat (1 ... N); titik = estimasi utama.
   function batangRentang(pMin, pMax, pTengah) {
     function pos(p) { return Math.max(0, Math.min(100, Math.log10(Math.max(p, 1)) / Math.log10(N) * 100)); }
     var isi = h('span', { 'class': 'isi' }), titik = h('span', { 'class': 'titik' });
@@ -333,7 +380,6 @@
       h('p', { 'class': 'catatan' }, sumber));
   }
 
-  // ---- kaki halaman -------------------------------------------------------------
   document.getElementById('kaki').textContent =
     'Versi ' + D.meta.versi + ' · perkiraan kasar, bukan peringkat resmi · tidak berafiliasi dengan SNPMB';
 })();

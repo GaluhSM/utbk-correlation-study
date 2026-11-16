@@ -18,8 +18,6 @@ keywords:
   - Thorndike Case III
   - pembatasan rentang
   - analisis faktor
-# TODO: Setelah rilis v1.0 di GitHub memunculkan DOI Zenodo, hapus tanda # di baris
-# berikut dan isi DOI-nya (DOI proyek, bukan DOI versi):
 # doi: "10.5281/zenodo.0000000"
 preferred-citation:
   type: article
@@ -32,5 +30,4 @@ preferred-citation:
   year: 2026
   languages:
     - ind
-  # TODO: Setelah EdArXiv menerima preprint, hapus tanda # dan isi DOI preprint:
-  # doi: "10.xxxx/osf.io/xxxxx"
+  doi: "10.35542/osf.io/97m5n"
