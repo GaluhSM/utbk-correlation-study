@@ -2,9 +2,11 @@
 
 > Need this in English? Click [here](./README.md)
 
-[![R \>= 4.1.0](https://img.shields.io/badge/R-%3E%3D%204.1.0-blue.svg)](https://www.r-project.org/) [![Code License: MIT](https://img.shields.io/badge/Code_License-MIT-yellow.svg)](https://opensource.org/licenses/MIT) [![Data License: CC BY 4.0](https://img.shields.io/badge/Data_License-CC_BY_4.0-lightgrey.svg)](https://creativecommons.org/licenses/by/4.0/) [![Reproducibility: renv](https://img.shields.io/badge/reproducibility-renv-green.svg)](https://rstudio.github.io/renv/) [![R CI](https://github.com/placeholder/utbk-correlation-study/actions/workflows/r-ci.yaml/badge.svg)](https://github.com/placeholder/utbk-correlation-study/actions/workflows/r-ci.yaml)
+[![R \>= 4.1.0](https://img.shields.io/badge/R-%3E%3D%204.1.0-blue.svg)](https://www.r-project.org/) [![Code License: MIT](https://img.shields.io/badge/Code_License-MIT-yellow.svg)](https://opensource.org/licenses/MIT) [![Data License: CC BY 4.0](https://img.shields.io/badge/Data_License-CC_BY_4.0-lightgrey.svg)](https://creativecommons.org/licenses/by/4.0/) [![Reproducibility: renv](https://img.shields.io/badge/reproducibility-renv-green.svg)](https://rstudio.github.io/renv/) [![R CI](https://github.com/placeholder/utbk-correlation-study/actions/workflows/r-ci.yaml/badge.svg)](https://github.com/placeholder/utbk-correlation-study/actions/workflows/r-ci.yaml)[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.24278853.svg)](https://doi.org/10.5281/zenodo.24278853)
 
 Paket replikasi dan dataset terbuka berbasis R untuk estimasi korelasi antarsubtes, pemodelan struktur faktor laten (EFA & CFA), koreksi bias restriksi rentang (*range restriction*), dan pemodelan persentil nasional pada UTBK-SNBT 2026.
+
+**Preprint:** [EdArXiv](https://doi.org/10.35542/osf.io/97m5n)
 
 ## Daftar Isi
 
@@ -165,11 +167,24 @@ Proyek ini memakai **dual license**, sebagaimana dirinci pada [`LICENSE`](./LICE
 ## Sitasi
 
 ``` bibtex
-@article{saputra2026utbk,
-  author = {Saputra, Galuh},
-  title  = {How Strongly Correlated Are the Subtests in the 2026 Indonesian University Entrance Exam (UTBK-SNBT)? Crowdsourced Estimates and Implications for National Ranking},
-  year   = {2026},
-  url    = {[https://github.com/placeholder/utbk-correlation-study](https://github.com/placeholder/utbk-correlation-study)}
+@misc{saputra2026utbk,
+  author    = {Saputra, Galuh},
+  title     = {How Strongly Correlated Are the Subtests in the 2026 Indonesian University Entrance Exam (UTBK-SNBT)? Crowdsourced Estimates and Implications for National Ranking},
+  year      = {2026},
+  publisher = {EdArXiv},
+  note      = {Preprint},
+  doi       = {10.35542/osf.io/97m5n},
+  url       = {https://doi.org/10.35542/osf.io/97m5n}
+}
+
+@software{saputra2026utbkcode,
+  author    = {Saputra, Galuh},
+  title     = {UTBK-SNBT 2026 Inter-Subtest Correlation \& Latent Factor Structure Replication: Code, Data, and Web Calculator},
+  year      = {2026},
+  version   = {1.0.0},
+  publisher = {Zenodo},
+  doi       = {10.5281/zenodo.24278853},
+  url       = {https://doi.org/10.5281/zenodo.24278853}
 }
 ```
 

@@ -30,11 +30,9 @@ library(jsonlite)
 source(here::here("R", "constants.R"))
 
 # Pengaturan Metadata Web -----------------------------------------------------
-# Isi DOI dan URL repositori setelah paper terbit; web menampilkan tautannya
-# hanya bila tidak kosong. Setelah diubah, jalankan ulang skrip ini.
 WEB_VERSI <- "1.0"
-WEB_DOI   <- ""
-WEB_REPO  <- ""
+WEB_DOI   <- "10.35542/osf.io/97m5n"
+WEB_REPO  <- "https://github.com/GaluhSM/utbk-correlation-study"
 WEB_JUDUL_PAPER <- paste0(
   "Seberapa Kuat Subtes UTBK-SNBT 2026 Saling Berkorelasi? ",
   "Estimasi dari Data Crowdsourced dan Implikasinya bagi ",
